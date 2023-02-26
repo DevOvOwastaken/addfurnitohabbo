@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Insert Furniture ~ v1 ~ by PHB</title>
+	<link rel="stylesheet" type="text/css" id="applicationStylesheet" href="AddItem.css" />
+
+	<link rel="stylesheet" type="text/css" id="applicationStylesheet" href="bootstrap/bootstrap.min.css" />
+
+	<style>
+		* {
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-o-user-select: none;
+			user-select: none;
+			-webkit-user-drag: none;
+			-khtml-user-drag: none;
+			-moz-user-drag: none;
+			-o-user-drag: none;
+		}
+
+		.selectphb {
+			position: absolute;
+			height: 19px;
+			left: 126px;
+			font-size: 11px;
+			border-radius: 10px;
+			box-shadow: inset 0 0 1em #ffd70000, 0 0 0.5em #0000004f;
+		}
+	</style>
+	<script>
+
+		const electron = require('@electron/remote');
+		const { ipcRenderer } = require('electron');
+		var furnisAdd;
+
+		function closeApp() {
+			ipcRenderer.send("closeAddItemsAlert");
+		}
+
+		function startAdd() {
+			console.log("Start add " + furnisAdd.length + " Items");
+			ipcRenderer.send("startAddItems", furnisAdd, document.getElementById('neworexisting').value, document.getElementById('selectPageAdd').value, document.getElementById('pageName').value, document.getElementById("parentPage").value);
+		}
+
+		function mudouAqui() {
+			switch (document.getElementById("neworexisting").value) {
+				case "1":
+					document.getElementById("SelectPage").style.display = "";
+					document.getElementById("SelectPage_").style.display = "none";
+					break;
+				case "2":
+					document.getElementById("SelectPage").style.display = "none";
+					document.getElementById("SelectPage_").style.display = "";
+					break;
+			}
+		}
+
+		ipcRenderer.on("setFurnis", function (e, furnis) {
+			document.getElementById("name").innerText = `Adding ${furnis.length} Furnis`;
+			document.getElementById("totalfurnis").innerText = `Total: ${furnis.length} furnis`;
+			furnisAdd = furnis;
+		});
+
+		ipcRenderer.on("addCatalogPage", function (e, results) {
+			var x = document.getElementById("selectPageAdd");
+			var y = document.getElementById("parentPage");
+			for (i = 0; i < results.length; i++) {
+				var option = document.createElement("option");
+				option.text = results[i]["caption"] + " - " + results[i]["id"];
+				option.value = results[i]["id"];
+				x.add(option);
+			}
+			for (i = 0; i < results.length; i++) {
+				var option = document.createElement("option");
+				option.text = results[i]["caption"] + " - " + results[i]["id"];
+				option.value = results[i]["id"];
+				y.add(option);
+			}
+		})
+
+	</script>
+</head>
+
+<body style="background: #f0f8ff00;">
+	<div id="AddItem">
+		<!--<svg class="Background">
+			<rect id="Background" rx="4" ry="4" x="0" y="0" width="320" height="273">
+			</rect>
+		</svg>
+		<div id="BarraSuperior">
+			<svg class="FundoBarra" style="-webkit-app-region: drag">
+				<rect id="FundoBarra" rx="3" ry="3" x="0" y="0" width="319" height="19">
+				</rect>
+			</svg>
+			<div id="PHB_FURNITURE_UPDATER">
+				<span>PHB FURNITURE UPDATER</span>
+			</div>
+			<div id="Fechar" style="cursor: pointer;-webkit-app-region: no-drag;" onclick="closeApp()">
+				<svg class="Linha_1" viewBox="0 0 9 9">
+					<path id="Linha_1" d="M 0 0 L 9 9">
+					</path>
+				</svg>
+				<svg class="Linha_2" viewBox="0 0 9 9">
+					<path id="Linha_2" d="M 9 0 L 0 9">
+					</path>
+				</svg>
+			</div>
+		</div>-->
+		<div id="Grade">
+			<svg class="Retngulo_12">
+				<rect id="Retngulo_12" rx="0" ry="0" x="0" y="0" width="327" height="181">
+				</rect>
+			</svg>
+		</div>
+		<div id="Adding_vaporwave_Furnis">
+			<span id="name">Adding ? Furnis</span>
+		</div>
+		<div id="Total_30_furnis">
+			<span id="totalfurnis">Total: ? furnis</span>
+		</div>
+		<div id="New_or_existing_page">
+			<span>New or existing page?</span>
+		</div>
+		<select class="selectphb" style="top:131px" id="neworexisting" onchange="mudouAqui()">
+			<option value='1'>Existing Page</option>
+			<option value='2'>New Page</option>
+		</select>
+		<div id="SelectPage">
+			<div id="Select_Page">
+				<span>Select Page</span>
+			</div>
+			<select class="selectphb" style="top: 21px;left: -26px;width: 150px;" id="selectPageAdd">
+			</select>
+		</div>
+		<div id="SelectPage_" style="display:none">
+			<div class="input-group input-group-sm mb-3" style="height: 10px;width: 230px;left: -50px;top: -17px;">
+				<span class="input-group-text" id="inputGroup-sizing-sm">Name</span>
+				<input type="text" class="form-control" id="pageName" aria-label="Sizing example input"
+					aria-describedby="inputGroup-sizing-sm">
+			</div>
+			<center><select class="selectphb" style="top: 21px;left: 10px;position: unset;width: 150px;" id="parentPage"
+					onchange="mudouAqui()">
+					<option value="-1">Select Parent Page</option>
+				</select></center>
+		</div>
+		<div style="cursor:pointer" onclick="startAdd()">
+			<svg class="Retngulo_19">
+				<rect id="Retngulo_19" rx="10" ry="10" x="0" y="0" width="70" height="24">
+				</rect>
+			</svg>
+			<div id="START">
+				<span>START</span>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

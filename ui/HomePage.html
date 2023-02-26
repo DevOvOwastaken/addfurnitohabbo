@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Insert Furniture ~ v1 ~ by PHB</title>
+	<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+	<link rel="stylesheet" type="text/css" id="applicationStylesheet" href="HomePage.css" />
+	<link rel="stylesheet" type="text/css" id="applicationStylesheet" href="bootstrap/bootstrap.min.css" />
+	<script id="applicationScript" type="text/javascript" src="HomePage.js"></script>
+	<link href="uppy/uppy.min.css" rel="stylesheet">
+	<script src="uppy/uppy.min.js"></script>
+	<style>
+		.uppy-StatusBar:not([aria-hidden=true]).is-waiting {
+			display: none;
+		}
+
+		.uppy-Dashboard-FileCard-preview {
+			display: none;
+		}
+
+		.uppy-Dashboard-FileCard-info {
+			height: 262px;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="HomePage">
+		<svg class="BordaBackground">
+			<rect id="BordaBackground" rx="10" ry="10" x="0" y="0" width="558" height="451">
+			</rect>
+		</svg>
+		<div id="HomeButton">
+			<svg class="Retngulo_2">
+				<rect id="Retngulo_2" rx="19.5" ry="19.5" x="0" y="0" width="117" height="39">
+				</rect>
+			</svg>
+			<div id="HOME">
+				<span>HOME</span>
+			</div>
+		</div>
+		<div id="ConfigButton" style="cursor:pointer" onclick="location.href='ConfigPage.html'">
+			<svg class="RetanguloConfigButton">
+				<rect id="RetanguloConfigButton" rx="19.5" ry="19.5" x="0" y="0" width="117" height="39">
+				</rect>
+			</svg>
+			<div id="CONFIG">
+				<span>CONFIG</span>
+			</div>
+		</div>
+
+		<div class="RetanguloRoomItems" id="drag-drop-area">
+		</div>
+
+		<div id="HomeButton_s">
+			<svg class="RetanguloHomeButton">
+				<rect id="RetanguloHomeButton" rx="19.5" ry="19.5" x="0" y="0" width="117" height="39">
+				</rect>
+			</svg>
+			<div id="START" style="cursor:pointer" onclick="start()">
+				<span>START</span>
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+
+
+	var uppy = new Uppy.Core()
+		.use(Uppy.Dashboard, {
+			inline: true,
+			target: '#drag-drop-area',
+			width: "535px",
+			height: "360px",
+			getMetaFromForm: true,
+			addResultToForm: true,
+			metaFields: (file) => {
+				return [
+					{
+						id: 'wallitem',
+						name: 'Wall item?',
+						render({ value, onChange, form }, h) {
+							return h('input', {
+								type: 'checkbox',
+								form,
+								onChange: (ev) => onChange(ev.target.checked ? 'true' : 'false'), defaultChecked: value === 'true'
+							})
+						},
+					},
+					{ id: 'furniname', name: "Name", placeholder: 'Name', defaultValue: `${String(file.meta.name).replace(".swf", "").replace(".nitro", "").replace("_icon.png", "")} name` },
+					{ id: 'description', name: "Description", placeholder: 'Description', defaultValue: `${String(file.meta.name).replace(".swf", "").replace(".nitro", "").replace("_icon.png", "")} desc` },
+					{ id: 'width', name: "Width", placeholder: 'Width', type: "number", defaultValue: 1 },
+					{ id: 'lenght', name: "Lenght", placeholder: 'Lenght', type: "number", defaultValue: 1 },
+					{ id: 'stackheight', name: "Stack Height", placeholder: 'Stack Height', defaultValue: "1" },
+					{ id: 'interaction', name: "Interaction", placeholder: 'Interaction', defaultValue: "default" },
+					{ id: 'interactioncount', name: "Interaction Count", placeholder: 'Interaction Count', type: "number", defaultValue: 1 },
+					{ id: 'vendingids', name: "Vending IDS", placeholder: 'Vending IDS', type: "number", defaultValue: 0 },
+					{ id: 'multiheight', name: "Multi Height", placeholder: 'Multi Height', defaultValue: "" },
+					{ id: 'customparams', name: "Custom Params", placeholder: 'Custom Params', defaultValue: "" },
+					{ id: 'effect_id_male', name: "Effect ID Male", placeholder: 'Effect ID Male', type: "number", defaultValue: 0 },
+					{ id: 'effect_id_female', name: "Effect ID Female", placeholder: 'Effect ID Female', type: "number", defaultValue: 0 },
+					{ id: 'clothing_on_walk', name: "Clothing on Walk", placeholder: 'Clothing on Walk', defaultValue: "" },
+					{
+						id: 'allow_stack',
+						name: 'Allow Stack?',
+						render({ value, onChange, form }, h) {
+							return h('input', {
+								type: 'checkbox',
+								form,
+								onChange: (ev) => onChange(ev.target.checked ? 'true' : 'false'), defaultChecked: value === 'true'
+							})
+						},
+					},
+					{
+						id: 'allow_sit',
+						name: 'Allow Sit?',
+						render({ value, onChange, form }, h) {
+							return h('input', {
+								type: 'checkbox',
+								form,
+								onChange: (ev) => onChange(ev.target.checked ? 'true' : 'false'), defaultChecked: value === 'true'
+							})
+						},
+					},
+					{
+						id: 'allow_walk',
+						name: 'Allow Walk?',
+						render({ value, onChange, form }, h) {
+							return h('input', {
+								type: 'checkbox',
+								form,
+								onChange: (ev) => onChange(ev.target.checked ? 'true' : 'false'), defaultChecked: value === 'true'
+							})
+						},
+					},
+					{
+						id: 'allow_lay',
+						name: 'Allow Lay?',
+						render({ value, onChange, form }, h) {
+							return h('input', {
+								type: 'checkbox',
+								form,
+								onChange: (ev) => onChange(ev.target.checked ? 'true' : 'false'), defaultChecked: value === 'true'
+							})
+						},
+					},
+					{
+						id: 'allow_gift',
+						name: 'Allow Gift?',
+						render({ value, onChange, form }, h) {
+							return h('input', {
+								type: 'checkbox',
+								form,
+								onChange: (ev) => onChange(ev.target.checked ? 'true' : 'false'), defaultChecked: value === 'true'
+							})
+						},
+					}, {
+						id: 'allow_trade',
+						name: 'Allow Trade?',
+						render({ value, onChange, form }, h) {
+							return h('input', {
+								type: 'checkbox',
+								form,
+								onChange: (ev) => onChange(ev.target.checked ? 'true' : 'false'), defaultChecked: value === 'true'
+							})
+						},
+					}, {
+						id: 'allow_recycle',
+						name: 'Allow Recycle?',
+						render({ value, onChange, form }, h) {
+							return h('input', {
+								type: 'checkbox',
+								form,
+								onChange: (ev) => onChange(ev.target.checked ? 'true' : 'false'), defaultChecked: value === 'true'
+							})
+						},
+					}, {
+						id: 'allow_marketplace_sell',
+						name: 'Allow Marketplace Sell?',
+						render({ value, onChange, form }, h) {
+							return h('input', {
+								type: 'checkbox',
+								form,
+								onChange: (ev) => onChange(ev.target.checked ? 'true' : 'false'), defaultChecked: value === 'true'
+							})
+						},
+					}, {
+						id: 'allow_inventory_stack',
+						name: 'Allow Inventory Stack?',
+						render({ value, onChange, form }, h) {
+							return h('input', {
+								type: 'checkbox',
+								form,
+								onChange: (ev) => onChange(ev.target.checked ? 'true' : 'false'), defaultChecked: value === 'true'
+							})
+						},
+					},
+
+				]
+			}
+		});
+
+
+
+	const electron = require('@electron/remote');
+	const { ipcRenderer } = require('electron');
+
+	function start() {
+		var furnis = [];
+		for (file in uppy.store.state.files) {
+			var file = uppy.store.state.files[file];
+			furni = {};
+			furni.classname = String(file.meta.name).replace(".swf", "").replace(".nitro", "").replace("_icon.png", "");
+			furni.name = file.meta.furniname || furni.classname + " name";
+			furni.description = file.meta.description || furni.classname + " desc";
+			furni.wallitem = file.meta.wallitem || false;
+			furni.width = file.meta.width || 1;
+			furni.item_length = file.meta.lenght || 1;
+			furni.stackheight = file.meta.stackheight || 1;
+			furni.interaction = file.meta.interaction || "default";
+			furni.interactioncount = file.meta.interactioncount || 1;
+			furni.vendingids = file.meta.vendingids || 0;
+			furni.customparams = file.meta.customparams || "";
+			furni.effect_id_male = file.meta.effect_id_male || 0;
+			furni.effect_id_female = file.meta.effect_id_female || 0;
+			furni.clothing_on_walk = file.meta.clothing_on_walk || "";
+			furni.allow_stack = file.meta.allow_stack || false;
+			furni.allow_sit = file.meta.allow_sit || false;
+			furni.allow_lay = file.meta.allow_lay || false;
+			furni.allow_gift = file.meta.allow_gift || false;
+			furni.allow_trade = file.meta.allow_trade || false;
+			furni.allow_recycle = file.meta.allow_recycle || false;
+			furni.allow_marketplace_sell = file.meta.allow_marketplace_sell || false;
+			furni.allow_walk = file.meta.allow_walk || false;
+			furni.allow_inventory_stack = file.meta.allow_inventory_stack || false;
+			furni.multiheight = file.meta.multiheight || "";
+			furnis.push(furni);
+		}
+
+		if (furnis.length > 0)
+			ipcRenderer.send("addFurnis", furnis);
+		else
+			ipcRenderer.send("noItemsErrorAlert");
+
+		console.log(JSON.stringify(furnis));
+	}
+
+	ipcRenderer.on("finished", () => {
+		alert("Finishd!");
+	})
+
+</script>
+
+</html>

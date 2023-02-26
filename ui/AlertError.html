@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Error!</title>
+	<link rel="stylesheet" type="text/css" id="applicationStylesheet" href="AlertError.css" />
+</head>
+<script>
+	const electron = require('@electron/remote');
+	const { ipcRenderer } = require('electron');
+
+	function fecharAlert() {
+		ipcRenderer.send("closeErrorAlert");
+	}
+	function fecharApp() {
+		ipcRenderer.send("closeApp");
+	}
+
+	ipcRenderer.on("setMessage", (e, message) => {
+		document.getElementById("mensagem").innerText = message;
+	});
+</script>
+
+<body>
+	<div id="ErrorAlert">
+		<svg class="Background">
+			<rect id="Background" rx="4" ry="4" x="0" y="0" width="205" height="160">
+			</rect>
+		</svg>
+		<div id="BarraSuperior">
+			<svg class="FundoBarra" style="-webkit-app-region: drag">
+				<rect id="FundoBarra" rx="3" ry="3" x="0" y="0" width="203" height="19">
+				</rect>
+			</svg>
+		</div>
+		<div id="Error">
+			<span>Error</span>
+		</div>
+		<div id="Error_loading_furnidatajson">
+			<span id="mensagem"></span>
+		</div>
+		<svg class="Icon_material-error" viewBox="3 3 30 30">
+			<path id="Icon_material-error"
+				d="M 18 3 C 9.720000267028809 3 3 9.720000267028809 3 18 C 3 26.27999877929688 9.719999313354492 33 18 33 C 26.28000068664551 33 33 26.28000068664551 33 18 C 33 9.719999313354492 26.28000068664551 3 18 3 Z M 19.5 25.5 L 16.5 25.5 L 16.5 22.5 L 19.5 22.5 L 19.5 25.5 Z M 19.5 19.5 L 16.5 19.5 L 16.5 10.5 L 19.5 10.5 L 19.5 19.5 Z">
+			</path>
+		</svg>
+		<div id="CloseButton" style="cursor:pointer" onclick="fecharAlert()">
+			<svg class="CloseRetangulo">
+				<rect id="CloseRetangulo" rx="7.5" ry="7.5" x="0" y="0" width="68" height="15">
+				</rect>
+			</svg>
+			<div id="CONTINUE">
+				<span>CONTINUE</span>
+			</div>
+		</div>
+		<div id="CloseButton_w" style="cursor:pointer;-webkit-app-region: no-drag;" onclick="fecharApp()">
+			<svg class="CloseRetangulo_x" viewBox="0 0 68 15">
+				<path id="CloseRetangulo_x"
+					d="M 7.5 0 L 60.5 0 C 64.64213562011719 0 68 3.357864379882812 68 7.5 C 68 11.64213562011719 64.64213562011719 15 60.5 15 L 7.5 15 C 3.357864379882812 15 0 11.64213562011719 0 7.5 C 0 3.357864379882812 3.357864379882812 0 7.5 0 Z">
+				</path>
+			</svg>
+			<div id="CLOSE_APP">
+				<span>CLOSE APP</span>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

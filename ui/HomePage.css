@@ -1,0 +1,222 @@
+.mediaViewInfo {
+	--web-view-name: HomePage;
+	--web-view-id: HomePage;
+	--web-scale-on-resize: true;
+	--web-enable-deep-linking: true;
+}
+:root {
+	--web-view-ids: HomePage;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: none;
+}
+#HomePage {
+	position: absolute;
+	width: 579px;
+	height: 521px;
+	background-color: rgba(255,255,255,1);
+	overflow: hidden;
+	--web-view-name: HomePage;
+	--web-view-id: HomePage;
+	--web-scale-on-resize: true;
+	--web-enable-deep-linking: true;
+}
+#BordaBackground {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.BordaBackground {
+	position: absolute;
+	overflow: visible;
+	width: 558px;
+	height: 451px;
+	left: 11px;
+	top: 59px;
+}
+#HomeButton {
+	position: absolute;
+	width: 117px;
+	height: 39px;
+	left: 166px;
+	top: 10px;
+	overflow: visible;
+}
+#Retngulo_2 {
+	fill: rgba(243,243,243,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Retngulo_2 {
+	position: absolute;
+	overflow: visible;
+	width: 117px;
+	height: 39px;
+	left: 0px;
+	top: 0px;
+}
+#HOME {
+	left: 30px;
+	top: 6px;
+	position: absolute;
+	overflow: visible;
+	width: 58px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(112,112,112,1);
+}
+#ConfigButton {
+	position: absolute;
+	width: 117px;
+	height: 39px;
+	left: 297px;
+	top: 10px;
+	overflow: visible;
+}
+#RetanguloConfigButton {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.RetanguloConfigButton {
+	position: absolute;
+	overflow: visible;
+	width: 117px;
+	height: 39px;
+	left: 0px;
+	top: 0px;
+}
+#CONFIG {
+	left: 23px;
+	top: 6px;
+	position: absolute;
+	overflow: visible;
+	width: 72px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(112,112,112,1);
+}
+#RetanguloRoomItems {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.RetanguloRoomItems {
+	position: absolute;
+	overflow: visible;
+	width: 535px;
+	height: 140px;
+	left: 22px;
+	top: 70px;
+}
+#DRAG_ROOM_ITEMS {
+	left: 194px;
+	top: 68px;
+	position: absolute;
+	overflow: visible;
+	width: 179px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(112,112,112,1);
+}
+#RetanguloWallItems {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.RetanguloWallItems {
+	position: absolute;
+	overflow: visible;
+	width: 535px;
+	height: 140px;
+	left: 22px;
+	top: 285px;
+}
+#DRAG_WALL_ITEMS {
+	left: 194px;
+	top: 253px;
+	position: absolute;
+	overflow: visible;
+	width: 168px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(112,112,112,1);
+}
+#HomeButton_s {
+	position: absolute;
+	width: 117px;
+	height: 39px;
+	left: 231px;
+	top: 444px;
+	overflow: visible;
+}
+#RetanguloHomeButton {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.RetanguloHomeButton {
+	position: absolute;
+	overflow: visible;
+	width: 117px;
+	height: 39px;
+	left: 0px;
+	top: 0px;
+}
+#START {
+	left: 32px;
+	top: 6px;
+	position: absolute;
+	overflow: visible;
+	width: 55px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 20px;
+	color: rgba(112,112,112,1);
+}

@@ -1,0 +1,211 @@
+.mediaViewInfo {
+	--web-view-name: ErrorAlert;
+	--web-view-id: ErrorAlert;
+	--web-scale-on-resize: true;
+	--web-enable-deep-linking: true;
+}
+:root {
+	--web-view-ids: ErrorAlert;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: none;
+}
+#ErrorAlert {
+	position: absolute;
+	width: 226px;
+	height: 184px;
+	overflow: hidden;
+	--web-view-name: ErrorAlert;
+	--web-view-id: ErrorAlert;
+	--web-scale-on-resize: true;
+	--web-enable-deep-linking: true;
+}
+#Background {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,0.302);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Background {
+	box-shadow: inset 0 0 1em black, 0 0 0.5em #0000009e;
+	/* filter: drop-shadow(0px 3px 14px rgba(0, 0, 0, 0.161)); */
+	position: absolute;
+	overflow: visible;
+	width: 205px;
+	height: 159px;
+	left: 10px;
+	top: 8px;
+	border-radius: 10px;
+}
+#BarraSuperior {
+	position: absolute;
+	width: 203px;
+	height: 19px;
+	left: 11px;
+	top: 8px;
+	overflow: visible;
+}
+#FundoBarra {
+	fill: rgba(243,243,243,1);
+}
+.FundoBarra {
+	position: absolute;
+	overflow: visible;
+	width: 203px;
+	height: 19px;
+	left: 0px;
+	top: 0px;
+}
+#Fechar {
+	position: absolute;
+	width: 9px;
+	height: 9px;
+	left: 185.163px;
+	top: 5.5px;
+	overflow: visible;
+}
+#Linha_1 {
+	fill: transparent;
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Linha_1 {
+	overflow: visible;
+	position: absolute;
+	width: 9.707px;
+	height: 9.707px;
+	left: 0px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Linha_2 {
+	fill: transparent;
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Linha_2 {
+	overflow: visible;
+	position: absolute;
+	width: 9.707px;
+	height: 9.707px;
+	left: 0px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Error {
+	left: 101px;
+	top: 11px;
+	position: absolute;
+	overflow: visible;
+	width: 25px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 10px;
+	color: rgba(112,112,112,1);
+}
+#Error_loading_furnidatajson {
+	left: 44px;
+	top: 89px;
+	position: absolute;
+	overflow: visible;
+	width: 139px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 10px;
+	color: rgba(112,112,112,1);
+}
+#Icon_material-error {
+	fill: rgba(255,0,0,1);
+}
+.Icon_material-error {
+	filter: drop-shadow(0px 1px 10px rgba(0, 0, 0, 0.349));
+	overflow: visible;
+	position: absolute;
+	width: 60px;
+	height: 43px;
+	left: 82px;
+	top: 41px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#CloseButton {
+	position: absolute;
+	width: 68px;
+	height: 15px;
+	left: 79px;
+	top: 113px;
+	overflow: visible;
+}
+#CloseRetangulo {
+	fill: rgb(218 218 218);
+}
+.CloseRetangulo {
+	filter: drop-shadow(0px 1px 6px rgba(0, 0, 0, 0.161));
+	position: absolute;
+	overflow: visible;
+	width: 86px;
+	height: 33px;
+	left: 0px;
+	top: 0px;
+}
+#CONTINUE {
+	left: 6px;
+	top: 1px;
+	position: absolute;
+	overflow: visible;
+	width: 57px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 10px;
+	color: rgba(112,112,112,1);
+}
+#CloseButton_w {position: absolute;width: 68px;height: 15px;left: 79px;top: 133px;overflow: visible;}
+#CloseRetangulo_x {
+	fill: rgb(218 218 218);
+}
+.CloseRetangulo_x {
+	filter: drop-shadow(0px 1px 6px rgba(0, 0, 0, 0.161));
+	overflow: visible;
+	position: absolute;
+	width: 66px;
+	height: 33px;
+	left: 1px;
+	top: -9px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#CLOSE_APP {
+	left: 5px;
+	top: 1px;
+	position: absolute;
+	overflow: visible;
+	width: 59px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 10px;
+	color: rgba(112,112,112,1);
+}

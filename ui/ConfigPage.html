@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Insert Furniture ~ v1 ~ by PHB</title>
+	<link rel="stylesheet" type="text/css" id="applicationStylesheet" href="ConfigPage.css" />
+	<link rel="stylesheet" type="text/css" id="applicationStylesheet" href="bootstrap/bootstrap.min.css" />
+	<script id="applicationScript" type="text/javascript" src="ConfigPage.js"></script>
+	<style>
+		.mb-3 {
+			margin-bottom: 0.45rem !important;
+		}
+	</style>
+	<script>
+
+		const electron = require('@electron/remote');
+		const { ipcRenderer } = require('electron');
+
+		ipcRenderer.send("getSettings", "");
+
+		ipcRenderer.on("setSettings", (event, configData) => {
+			document.getElementById("mysqlHost").value = configData.mysqlSettings.hostname;
+			document.getElementById("mysqlPort").value = configData.mysqlSettings.port;
+			document.getElementById("mysqlUser").value = configData.mysqlSettings.username;
+			document.getElementById("mysqlPassword").value = configData.mysqlSettings.password;
+			document.getElementById("mysqlDatabase").value = configData.mysqlSettings.database;
+			document.getElementById("mysqlFurnitureQuery").value = configData.mysqlSettings.furniQuery;
+			document.getElementById("mysqlItemQuery").value = configData.mysqlSettings.itemQuery;
+			document.getElementById("mysqlPageQuery").value = configData.mysqlSettings.pageQuery;
+			document.getElementById("mysqlUpdateIdQuery").value = configData.mysqlSettings.updateIdQuery;
+			document.getElementById("furnidataPath").value = configData.pathSettings.furnidata;
+			document.getElementById("furnidataJsonPath").value = configData.pathSettings.furnidataJson;
+		});
+
+		function save() {
+			configData = {};
+			mysqlSettings = {};
+			pathSettings = {};
+			mysqlSettings.hostname = document.getElementById("mysqlHost").value;
+			mysqlSettings.port = document.getElementById("mysqlPort").value;
+			mysqlSettings.username = document.getElementById("mysqlUser").value;
+			mysqlSettings.password = document.getElementById("mysqlPassword").value;
+			mysqlSettings.database = document.getElementById("mysqlDatabase").value;
+			mysqlSettings.furniQuery = document.getElementById("mysqlFurnitureQuery").value;
+			mysqlSettings.itemQuery = document.getElementById("mysqlItemQuery").value;
+			mysqlSettings.pageQuery = document.getElementById("mysqlPageQuery").value;
+			mysqlSettings.updateIdQuery = document.getElementById("mysqlUpdateIdQuery").value;
+			pathSettings.furnidata = document.getElementById("furnidataPath").value;
+			pathSettings.furnidataJson = document.getElementById("furnidataJsonPath").value;
+			configData.mysqlSettings = mysqlSettings;
+			configData.pathSettings = pathSettings;
+			ipcRenderer.send("saveSettings", configData);
+		}
+	</script>
+</head>
+
+<body>
+	<div id="ConfigPage">
+		<svg class="BordaBackground">
+			<rect id="BordaBackground" rx="10" ry="10" x="0" y="0" width="558" height="451">
+			</rect>
+		</svg>
+		<div id="HomeButton" style="cursor:pointer" onclick="location.href='HomePage.html'">
+			<svg class="Retngulo_2">
+				<rect id="Retngulo_2" rx="19.5" ry="19.5" x="0" y="0" width="117" height="39">
+				</rect>
+			</svg>
+			<div id="HOME">
+				<span>HOME</span>
+			</div>
+		</div>
+		<div id="ConfigButton">
+			<svg class="RetanguloConfigButton">
+				<rect id="RetanguloConfigButton" rx="19.5" ry="19.5" x="0" y="0" width="117" height="39">
+				</rect>
+			</svg>
+			<div id="CONFIG">
+				<span>CONFIG</span>
+			</div>
+		</div>
+
+		<div id="settings" style="
+    width: 539px;
+    margin-top: 81px;
+    margin-left: 21px;
+">
+
+			<div style="display: flex;aling-items: center;justify-content: space-between;">
+				<div class="input-group mb-3" style="width: 186px;">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="inputGroup-sizing-default">Host</span>
+					</div>
+					<input type="text" class="form-control" aria-label="Default" id="mysqlHost"
+						aria-describedby="inputGroup-sizing-default">
+				</div>
+				<div class="input-group mb-3" style="width: 120px;">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="inputGroup-sizing-default">Port</span>
+					</div>
+					<input type="text" class="form-control" aria-label="Default" id="mysqlPort"
+						aria-describedby="inputGroup-sizing-default">
+				</div>
+
+
+				<div class="input-group mb-3" style="width: 214px;">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="inputGroup-sizing-default">DB Name</span>
+					</div>
+					<input type="text" class="form-control" aria-label="Default" id="mysqlDatabase"
+						aria-describedby="inputGroup-sizing-default">
+				</div>
+
+			</div>
+
+			<div style="display: flex;aling-items: center;justify-content: space-between;">
+				<div class="input-group mb-3" style="width: 300px;    padding-right: 10px;">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="inputGroup-sizing-default">Username</span>
+					</div>
+					<input type="text" class="form-control" aria-label="Default" id="mysqlUser"
+						aria-describedby="inputGroup-sizing-default">
+				</div>
+				<div class="input-group mb-3" style="width: 300px;">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+					</div>
+					<input type="text" class="form-control" aria-label="Default" id="mysqlPassword"
+						aria-describedby="inputGroup-sizing-default">
+				</div>
+			</div>
+
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="inputGroup-sizing-default">Furniture Query</span>
+				</div>
+				<input type="text" class="form-control" aria-label="Default" id="mysqlFurnitureQuery"
+					aria-describedby="inputGroup-sizing-default">
+			</div>
+
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="inputGroup-sizing-default">Item Query</span>
+				</div>
+				<input type="text" class="form-control" aria-label="Default" id="mysqlItemQuery"
+					aria-describedby="inputGroup-sizing-default">
+			</div>
+
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="inputGroup-sizing-default">Page Query</span>
+				</div>
+				<input type="text" class="form-control" aria-label="Default" id="mysqlPageQuery"
+					aria-describedby="inputGroup-sizing-default">
+			</div>
+
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="inputGroup-sizing-default">Update Id Query</span>
+				</div>
+				<input type="text" class="form-control" aria-label="Default" id="mysqlUpdateIdQuery"
+					aria-describedby="inputGroup-sizing-default">
+			</div>
+
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="inputGroup-sizing-default">Furnidata.xml Path
+					</span>
+				</div>
+				<input type="text" class="form-control" aria-label="Default" id="furnidataPath"
+					aria-describedby="inputGroup-sizing-default">
+			</div>
+
+
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="inputGroup-sizing-default">Furnidata.json Path
+					</span>
+				</div>
+				<input type="text" class="form-control" aria-label="Default" id="furnidataJsonPath"
+					aria-describedby="inputGroup-sizing-default">
+			</div>
+
+		</div>
+
+
+		<div id="HomeButton_p" style="cursor:pointer" onclick="save()">
+			<svg class="RetanguloHomeButton">
+				<rect id="RetanguloHomeButton" rx="19.5" ry="19.5" x="0" y="0" width="117" height="39">
+				</rect>
+			</svg>
+			<div id="SAVE">
+				<span>SAVE</span>
+			</div>
+		</div>
+
+	</div>
+</body>
+
+</html>
